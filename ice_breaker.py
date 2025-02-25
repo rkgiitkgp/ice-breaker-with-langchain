@@ -1,3 +1,4 @@
+from typing import Tuple
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
@@ -5,7 +6,7 @@ from dotenv import load_dotenv
 from langchain_ollama import ChatOllama
 from agents.linkedin_lookup_agent import lookup as linkedin_lookup_agent
 from agents.twitter_lookup_agent import lookup as twitter_lookup_agent
-from output_parsers import summary_parser
+from output_parsers import Summary, summary_parser
 
 
 
@@ -14,7 +15,7 @@ from third_parties.twitter import scrape_user_tweets_mock
 
 api_key = "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"
 
-def ice_break_with(name: str) -> str:
+def ice_break_with(name: str) -> Tuple[Summary, str]:
     linkedin_username = linkedin_lookup_agent(name=name)
     linkedin_data = scrape_linkedin_profile(linkedin_profile_url=linkedin_username, mock=True)
 
@@ -53,9 +54,9 @@ def ice_break_with(name: str) -> str:
     chain = summary_prompt_template | llm | summary_parser
 
     # Executes the chain and gets the model's response.
-    response = chain.invoke(input={"information": linkedin_data, "twitter_posts": tweets})
+    response:Summary = chain.invoke(input={"information": linkedin_data, "twitter_posts": tweets})
 
-    print(response)
+    return response, linkedin_data.get("profile_pic_url")
 
 if __name__ == "__main__":
     load_dotenv()
