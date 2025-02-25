@@ -27,7 +27,8 @@ class TopicOfInterest(BaseModel):
     def to_dict(self) -> Dict[str, Any]:
         return {"topics_of_interest": self.topics_of_interest}
 
-
+#PydanticOutputParser is a utility in LangChain that helps convert LLM outputs into structured data using Pydantic models.
+#Instead of getting raw text responses, we can enforce structured outputs such as dictionaries, JSON, or specific object types.
 summary_parser = PydanticOutputParser(pydantic_object=Summary)
 ice_breaker_parser = PydanticOutputParser(pydantic_object=IceBreaker)
 topics_of_interest_parser = PydanticOutputParser(pydantic_object=TopicOfInterest)

@@ -41,7 +41,7 @@ def lookup(name: str) -> str:
         )
     ]
 
-    # super popular promt for ReAct prompting. This prompt is send to the llm. and langchain will take care of the rest.
+    # super popular prompt for ReAct prompting. This prompt is send to the llm. and langchain will take care of the rest.
     react_prompt = hub.pull("hwchase17/react")
 
     # create_react_agent is a built in function in langchain. which receives 1. llm, 2. tools, 3. react prompt
