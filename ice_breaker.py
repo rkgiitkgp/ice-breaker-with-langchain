@@ -42,7 +42,7 @@ def ice_break_with(name: str) -> Tuple[Summary, str]:
 
     # This method is from library "langchain-openai" which is created by OpenAI. 
     # It support lots of method which can be used to use chat gpt models.
-    llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo")
+    llm = ChatOpenAI(temperature=0, model="gpt-4o-mini")
 
     # Chat with Ollama
     # llm = ChatOllama(temperature=0, model="llama3.2")
