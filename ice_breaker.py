@@ -13,7 +13,6 @@ from output_parsers import Summary, summary_parser
 from third_parties.linkedin import scrape_linkedin_profile
 from third_parties.twitter import scrape_user_tweets_mock
 
-api_key = "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"
 
 def ice_break_with(name: str) -> Tuple[Summary, str]:
     linkedin_username = linkedin_lookup_agent(name=name)
