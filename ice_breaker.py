@@ -34,7 +34,7 @@ def ice_break_with(name: str) -> Tuple[Summary, str]:
     # This method creates a template and also provide more feature where we can create template using different methodologies. 
     # and also do couple of validation for us
     summary_prompt_template = PromptTemplate(
-        input_variables="information", 
+        input_variables=["information", "twitter_posts"], 
         template=summary_template,
         partial_variables={"format_instruction": summary_parser.get_format_instructions}
         )
